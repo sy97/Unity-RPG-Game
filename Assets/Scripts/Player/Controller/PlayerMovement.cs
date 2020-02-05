@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
   public void MoveTo(RaycastHit hit)
   {
-    if (_focus != null) _focus.GetComponent<InteractableController>().StopInteract();
+    if (_focus != null) _focus.GetComponent<BaseInteractable>().StopInteract();
 
     _agent.isStopped = false;
     _agent.SetDestination(hit.point);
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
   public void MoveToInteractable(RaycastHit hit)
   {
     _focus = hit.transform;
-    _focus.GetComponent<InteractableController>().StartInteract();
+    _focus.GetComponent<BaseInteractable>().StartInteract(transform);
     _agent.SetDestination(hit.point);
   }
 
